@@ -41,7 +41,7 @@ async function start() {
         env: { 
             ...process.env, 
             DATABASE_URL: dbUrl,
-            PORT: '5004',
+            PORT: '5006',
             NODE_ENV: 'development',
             USE_MEMORY_SESSION: 'true'
         }

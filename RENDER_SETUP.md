@@ -9,6 +9,8 @@
 ```
 DATABASE_URL=postgresql://postgres:Rayan201667%24@db.imzjapteeyxumnevnxmu.supabase.co:5432/postgres?sslmode=no-verify
 SESSION_SECRET=JRtbJe0z9eXAwTAbTSoG0oyt0b7EvdoKlqX/bKbHK3dpsxlqkWYR1ONputW8n6AKFBP2EHpVKq5dJ1c/cQv93A==
+SUPABASE_URL=https://jbdwunqqcwnviqxviwzh.supabase.co
+SUPABASE_ANON_KEY=sb_publishable_50l5iPtIsaEZKziDLhzOSw_GTh1A-pj
 VAPID_PRIVATE_KEY=dUnwDkyAQndUc2l92-ZqkIPDL7DpJJquS5pn0BcQp6Y
 VAPID_PUBLIC_KEY=BEW6basvmbqUpZrQqjxnpAifjdl1-qdSFHk3yNIGK-_McXzEhWYOByvxpFfegYr7kT0zJ4TBaxjfFi_95q2aLSU
 PUBLIC_OBJECT_SEARCH_PATHS=/dummy-bucket/public
