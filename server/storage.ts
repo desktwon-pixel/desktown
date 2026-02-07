@@ -131,7 +131,7 @@ import {
   type InsertStory,
 } from "../shared/schema.ts";
 import { db } from "./db.ts";
-import { eq, desc, and, or, like, sql, inArray } from "drizzle-orm";
+import { eq, desc, and, or, like, sql, inArray, gt, lte } from "drizzle-orm";
 
 export interface IStorage {
   // User operations (Required for Replit Auth)
@@ -1428,7 +1428,7 @@ export class DatabaseStorage implements IStorage {
       .from(advertisements)
       .where(and(
         eq(advertisements.status, 'active'),
-        sql`${advertisements.endDate} > ${now}`
+        gt(advertisements.endDate, now)
       ))
       .orderBy(desc(advertisements.createdAt));
   }
@@ -2566,7 +2566,7 @@ export class DatabaseStorage implements IStorage {
       })
       .from(stories)
       .leftJoin(users, eq(stories.authorId, users.id))
-      .where(sql`${stories.expiresAt} > ${now}`)
+      .where(gt(stories.expiresAt, now))
       .orderBy(desc(stories.createdAt));
 
     return activeStories.map(s => ({
@@ -2621,7 +2621,7 @@ export class DatabaseStorage implements IStorage {
     const expiredStories = await db
       .select({ id: stories.id })
       .from(stories)
-      .where(sql`${stories.expiresAt} <= ${now}`);
+      .where(lte(stories.expiresAt, now));
 
     for (const story of expiredStories) {
       await this.deleteStory(story.id);

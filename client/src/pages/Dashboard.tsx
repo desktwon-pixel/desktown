@@ -25,7 +25,7 @@ import {
   Clock,
   Sparkles,
 } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import type { Task, Ticket, Meeting, Transaction, Department, User } from "@shared/schema";
 import { useState } from "react";
 import { StatusVideoRecorder, FloatingVideoButton } from "@/components/StatusVideoRecorder";
@@ -80,6 +80,7 @@ const statusColors: Record<string, string> = {
 
 export default function Dashboard() {
   const [videoRecorderOpen, setVideoRecorderOpen] = useState(false);
+  const [, setLocation] = useLocation();
   const { language } = useLanguage();
   const t = translations[language];
 
@@ -191,6 +192,7 @@ export default function Dashboard() {
       trendUp: taskCompletionRate >= 50,
       gradient: "from-cyan-500 to-teal-500",
       iconBg: "bg-cyan-500/10",
+      path: "/tasks"
     },
     { 
       label: t.dashboard?.activeTasks || "Active Tasks", 
@@ -200,6 +202,7 @@ export default function Dashboard() {
       trendUp: null,
       gradient: "from-blue-500 to-indigo-500",
       iconBg: "bg-blue-500/10",
+      path: "/tasks"
     },
     { 
       label: t.dashboard?.openTickets || "Open Tickets", 
@@ -209,6 +212,7 @@ export default function Dashboard() {
       trendUp: openTickets === 0,
       gradient: "from-amber-500 to-orange-500",
       iconBg: "bg-amber-500/10",
+      path: "/tickets"
     },
     { 
       label: t.dashboard?.teamMembers || "Team Members", 
@@ -218,6 +222,7 @@ export default function Dashboard() {
       trendUp: true,
       gradient: "from-emerald-500 to-green-500",
       iconBg: "bg-emerald-500/10",
+      path: "/team"
     },
     { 
       label: t.dashboard?.meetings || "Meetings", 
@@ -227,6 +232,7 @@ export default function Dashboard() {
       trendUp: null,
       gradient: "from-violet-500 to-purple-500",
       iconBg: "bg-violet-500/10",
+      path: "/meetings"
     },
     { 
       label: t.dashboard?.departments || "Departments", 
@@ -236,6 +242,7 @@ export default function Dashboard() {
       trendUp: departments.length > 0,
       gradient: "from-pink-500 to-rose-500",
       iconBg: "bg-pink-500/10",
+      path: "/departments"
     },
   ];
 
@@ -298,6 +305,7 @@ export default function Dashboard() {
             key={kpi.label} 
             className="glass rounded-xl p-4 hover-glow transition-all duration-300 cursor-pointer group"
             data-testid={`kpi-card-${index}`}
+            onClick={() => kpi.path && setLocation(kpi.path)}
           >
             <div className="flex items-center gap-3 mb-3">
               <div className={`p-2 rounded-lg ${kpi.iconBg}`}>

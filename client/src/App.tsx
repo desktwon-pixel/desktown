@@ -287,6 +287,28 @@ function ProtectedPaidServices() {
 function OfficeRenterRouter() {
   return (
     <Switch>
+      {/* Standard Features */}
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/follow-up" component={FollowUp} />
+      <Route path="/tasks" component={Tasks} />
+      <Route path="/tickets" component={Tickets} />
+      <Route path="/feed" component={SocialFeed} />
+      <Route path="/messages" component={Messages} />
+      <Route path="/mail" component={InternalMail} />
+      <Route path="/meetings" component={Meetings} />
+      <Route path="/video-room/:meetingId" component={VideoRoom} />
+      <Route path="/team" component={Team} />
+      <Route path="/departments" component={Departments} />
+      <Route path="/departments/:id" component={Department} />
+      <Route path="/training" component={TrainingWelcome} />
+      <Route path="/training/live/:sessionId?" component={TrainingDashboard} />
+      <Route path="/training/library" component={SavedLessons} />
+      <Route path="/employees/:username" component={EmployeeProfile} />
+      <Route path="/files" component={Files} />
+      <Route path="/calendar" component={CalendarPage} />
+      <Route path="/jobs" component={Jobs} />
+
+      {/* Office Renter Specific */}
       <Route path="/my-subscriptions" component={Subscription} />
       <Route path="/office/:slug" component={OfficeDetail} />
       <Route path="/profile" component={Profile} />
@@ -296,11 +318,11 @@ function OfficeRenterRouter() {
       <Route path="/employee-portal" component={EmployeePortal} />
 
       {/* Protected routes - require subscription */}
-      <Route path="/" component={ProtectedProfile} />
+      <Route path="/" component={Dashboard} />
       <Route path="/my-office" component={ProtectedOfficeManagement} />
       <Route path="/my-services" component={ProtectedOfficeServicesShowcase} />
       <Route path="/paid-services" component={ProtectedPaidServices} />
-      <Route component={ProtectedProfile} />
+      <Route component={Dashboard} />
     </Switch>
   );
 }

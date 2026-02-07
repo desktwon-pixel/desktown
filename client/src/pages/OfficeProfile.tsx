@@ -163,7 +163,7 @@ export default function OfficeProfile() {
         {/* Dashboard Login Button */}
         <Button
           variant="outline"
-          onClick={() => window.location.href = "/api/login"}
+          onClick={() => window.location.href = "/api/login?role=office_renter&type=office"}
           className="w-full mt-4 border-amber-500/50 text-amber-400 hover:bg-amber-500/10 rounded-xl py-3"
           data-testid="button-dashboard-login"
         >

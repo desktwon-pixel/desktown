@@ -565,7 +565,7 @@ export default function Landing() {
                       } else {
                         // Store pending profile type and redirect to social login
                         localStorage.setItem('pendingProfileType', 'office');
-                        window.location.href = '/api/login?role=manager&type=office';
+                        window.location.href = '/api/login?role=office_renter&type=office';
                       }
                     }}
                     className="w-full flex items-center gap-4 p-4 bg-gradient-to-r from-amber-500/20 to-amber-600/10 border border-amber-500/30 rounded-2xl hover:border-amber-400 transition-all"

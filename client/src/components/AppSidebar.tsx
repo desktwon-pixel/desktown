@@ -55,20 +55,22 @@ interface NavItem {
 }
 
 const navigationItems: NavItem[] = [
-  { titleKey: "followUp", url: "/follow-up", icon: LayoutDashboard, categoryKey: "overview", allowedRoles: ["member", "manager", "admin"] },
-  { titleKey: "tasks", url: "/tasks", icon: CheckSquare, categoryKey: "productivity", allowedRoles: ["member", "manager", "admin"] },
-  { titleKey: "tickets", url: "/tickets", icon: Ticket, categoryKey: "productivity", allowedRoles: ["member", "manager", "admin"] },
+  { titleKey: "dashboard", url: "/dashboard", icon: LayoutDashboard, categoryKey: "overview", allowedRoles: ["member", "manager", "admin", "office_renter"] },
+  { titleKey: "myProfile", url: "/profile", icon: User, categoryKey: "account", allowedRoles: ["member", "manager", "admin", "office_renter"] },
+  { titleKey: "followUp", url: "/follow-up", icon: LayoutDashboard, categoryKey: "overview", allowedRoles: ["member", "manager", "admin", "office_renter"] },
+  { titleKey: "tasks", url: "/tasks", icon: CheckSquare, categoryKey: "productivity", allowedRoles: ["member", "manager", "admin", "office_renter"] },
+  { titleKey: "tickets", url: "/tickets", icon: Ticket, categoryKey: "productivity", allowedRoles: ["member", "manager", "admin", "office_renter"] },
   { titleKey: "n8nAutomation", url: "/n8n-settings", icon: Zap, categoryKey: "productivity", allowedRoles: ["manager", "admin"] },
-  { titleKey: "socialFeed", url: "/feed", icon: Rss, categoryKey: "communication", allowedRoles: ["member", "manager", "admin"] },
-  { titleKey: "messages", url: "/messages", icon: MessageSquare, categoryKey: "communication", allowedRoles: ["member", "manager", "admin"] },
+  { titleKey: "socialFeed", url: "/feed", icon: Rss, categoryKey: "communication", allowedRoles: ["member", "manager", "admin", "office_renter"] },
+  { titleKey: "messages", url: "/messages", icon: MessageSquare, categoryKey: "communication", allowedRoles: ["member", "manager", "admin", "office_renter"] },
   { titleKey: "internalMail", url: "/mail", icon: Mail, categoryKey: "communication", allowedRoles: ["member", "manager", "admin", "office_renter"] },
-  { titleKey: "meetings", url: "/meetings", icon: Video, categoryKey: "communication", allowedRoles: ["member", "manager", "admin"] },
-  { titleKey: "team", url: "/team", icon: Users, categoryKey: "organization", allowedRoles: ["member", "manager", "admin"] },
-  { titleKey: "departments", url: "/departments", icon: Building2, categoryKey: "organization", allowedRoles: ["member", "manager", "admin"] },
-  { titleKey: "training", url: "/training", icon: GraduationCap, categoryKey: "organization", allowedRoles: ["member", "manager", "admin"] },
+  { titleKey: "meetings", url: "/meetings", icon: Video, categoryKey: "communication", allowedRoles: ["member", "manager", "admin", "office_renter"] },
+  { titleKey: "team", url: "/team", icon: Users, categoryKey: "organization", allowedRoles: ["member", "manager", "admin", "office_renter"] },
+  { titleKey: "departments", url: "/departments", icon: Building2, categoryKey: "organization", allowedRoles: ["member", "manager", "admin", "office_renter"] },
+  { titleKey: "training", url: "/training", icon: GraduationCap, categoryKey: "organization", allowedRoles: ["member", "manager", "admin", "office_renter"] },
   { titleKey: "officeManagement", url: "/office-management", icon: Store, categoryKey: "management", allowedRoles: ["manager", "admin"] },
   { titleKey: "servicesShowcase", url: "/services-showcase", icon: Package, categoryKey: "management", allowedRoles: ["manager", "admin"] },
-  { titleKey: "jobPostings", url: "/jobs", icon: Briefcase, categoryKey: "management", allowedRoles: ["manager", "admin"] },
+  { titleKey: "jobPostings", url: "/jobs", icon: Briefcase, categoryKey: "management", allowedRoles: ["manager", "admin", "office_renter"] },
   { titleKey: "adminPanel", url: "/admin", icon: Shield, categoryKey: "admin", allowedRoles: ["admin"] },
   { titleKey: "finances", url: "/finances", icon: DollarSign, categoryKey: "admin", allowedRoles: ["admin"] },
   { titleKey: "advertising", url: "/advertising", icon: Newspaper, categoryKey: "admin", allowedRoles: ["admin"] },
@@ -175,6 +177,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
     management: Store,
     admin: Shield,
     businessServices: Store,
+    account: User,
   };
 
   const getCategoryLabel = (categoryKey: string) => {
@@ -186,6 +189,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
       management: t.sidebar?.management || "Management",
       admin: t.sidebar?.admin || "Admin",
       businessServices: t.sidebar?.businessServices || "Business Services",
+      account: t.sidebar?.account || "Account",
     };
     return labels[categoryKey] || categoryKey;
   };
@@ -193,6 +197,8 @@ export function AppSidebar({ user }: AppSidebarProps) {
   const getItemLabel = (titleKey: string) => {
     const labels: Record<string, string> = {
       workspace: t.sidebar?.workspace || "My Workspace",
+      dashboard: t.sidebar?.dashboard || "Dashboard",
+      myProfile: t.sidebar?.myProfile || "My Profile",
       followUp: t.sidebar?.followUp || "Follow Up",
       employeeProfile: t.sidebar?.employeeProfile || "Employee Profile",
       tasks: t.sidebar?.tasks || "Tasks",
@@ -227,20 +233,22 @@ export function AppSidebar({ user }: AppSidebarProps) {
     <Sidebar className="border-r border-white/5">
       <SidebarHeader className="p-5 border-b border-white/5">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center overflow-hidden border border-white/10">
-                <img src="/assets/logo.png" alt="DeskTown Logo" className="w-full h-full object-contain p-1" />
+          <Link href="/dashboard">
+            <div className="flex items-center gap-3 cursor-pointer">
+              <div className="relative">
+                <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center overflow-hidden border border-white/10">
+                  <img src="/assets/logo.png" alt="DeskTown Logo" className="w-full h-full object-contain p-1" />
+                </div>
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-sidebar" />
               </div>
-              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-sidebar" />
+              <div>
+                <h1 className="font-bold text-lg tracking-tight">DeskTown</h1>
+                <p className="text-xs text-muted-foreground">
+                  {isOfficeRenter ? t.sidebar?.businessServices || "Business Services" : t.sidebar?.virtualWorkspace || "Virtual Workspace"}
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="font-bold text-lg tracking-tight">DeskTown</h1>
-              <p className="text-xs text-muted-foreground">
-                {isOfficeRenter ? t.sidebar?.businessServices || "Business Services" : t.sidebar?.virtualWorkspace || "Virtual Workspace"}
-              </p>
-            </div>
-          </div>
+          </Link>
           <LanguageSwitcher size="icon" showLabel={false} />
         </div>
       </SidebarHeader>

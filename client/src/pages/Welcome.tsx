@@ -79,13 +79,13 @@ export default function Welcome() {
       ? {
         icon: Home,
         label: language === 'ar' ? 'لوحة التحكم' : 'Dashboard',
-        href: user.role === 'visitor' ? "/profile/visitor" : "/follow-up",
+        href: user.role === 'visitor' ? "/profile/visitor" : "/dashboard",
         color: "text-blue-500"
       }
       : {
         icon: DoorOpen,
         label: language === 'ar' ? 'دخول المكتب' : 'Office Login',
-        href: "/api/login?role=manager&type=office",
+        href: "/api/login?role=office_renter&type=office",
         color: "text-amber-500"
       },
   ];
