@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx server/index.ts",
     "dev:local": "node local-launcher.js",
-    "build": "tsx script/build.ts",
+    "build": "node --import tsx script/build.ts",
     "start": "node render-launcher.js",
     "start:direct": "node dist/index.cjs",
     "check": "tsc",
