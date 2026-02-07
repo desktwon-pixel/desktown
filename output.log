@@ -1,0 +1,39 @@
+﻿node.exe : C:\DESKTOWN\Onede
+sk\Onedesk\server\db.ts:9
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (C:\DE  
+  SKTOWN\One...\server\db   
+ .ts:9:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+  throw new Error(
+        ^
+
+Error: DATABASE_URL must be 
+set. Did you forget to 
+provision a database?
+    at <anonymous> (C:\DESKT
+OWN\Onedesk\Onedesk\server\d
+b.ts:9:9)
+    at ModuleJob.run (node:i
+nternal/modules/esm/module_j
+ob:413:25)
+    at async onImport.traceP
+romise.__proto__ (node:inter
+nal/modules/esm/loader:654:2
+6)
+    at async asyncRunEntryPo
+intWithESMLoader (node:inter
+nal/modules/run_main:101:5)
+
+Node.js v25.2.1

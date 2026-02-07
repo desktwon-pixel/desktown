@@ -1,0 +1,2 @@
+
+SELECT User(*) FROM users;

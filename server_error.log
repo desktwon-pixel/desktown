@@ -1,0 +1,64 @@
+﻿node.exe : file:///C:/DESKTO
+WN/Onedesk/Onedesk/node_modu
+les/openid-client/build/inde
+x.js:89
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (file:  
+  ///C:/DESK...ild/index.   
+ js:89:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+    const err = new 
+TypeError(message, { cause 
+});
+                ^
+
+TypeError: "clientId" must 
+be a non-empty string
+    at CodedTypeError (C:\DE
+SKTOWN\Onedesk\Onedesk\node_
+modules\openid-client\src\in
+dex.ts:839:15)
+    at new Configuration (C:
+\DESKTOWN\Onedesk\Onedesk\no
+de_modules\openid-client\src
+\index.ts:1849:13)
+    at Module.discovery (C:\
+DESKTOWN\Onedesk\Onedesk\nod
+e_modules\openid-client\src\
+index.ts:1281:20)
+    at process.processTicksA
+ndRejections (node:internal/
+process/task_queues:103:5)
+    at async memoize.maxAge 
+(C:\DESKTOWN\Onedesk\Onedesk
+\server\replitAuth.ts:13:12)
+    at async setupAuth (C:\D
+ESKTOWN\Onedesk\Onedesk\serv
+er\replitAuth.ts:73:18)
+    at async registerRoutes 
+(C:\DESKTOWN\Onedesk\Onedesk
+\server\routes.ts:143:3)
+    at async <anonymous> (C:
+\DESKTOWN\Onedesk\Onedesk\se
+rver\index.ts:79:3) {
+  code: 
+'ERR_INVALID_ARG_TYPE',
+  [cause]: undefined
+}
+
+Node.js v25.2.1
+Assertion failed: 
+!(handle->flags & 
+UV_HANDLE_CLOSING), file 
+src\win\async.c, line 76
